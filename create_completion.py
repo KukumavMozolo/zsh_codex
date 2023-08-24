@@ -26,7 +26,7 @@ user = '<|user|>' + str(sys.argv[1]) + "<|end|><|assistant|>" #talks less
 query= main + ' -m ' + model + ' -p \"' + system + user + " \" " + params
 
 pipe_path = "/tmp/tmp_pipe"
-log = home_directory+'/.oh-my-zsh/custom/plugins/zsh_codex/info.log'
+log = home_directory+'/.oh-my-zsh/custom/plugins/zsh_starcodex/info.log'
 with open(pipe_path, 'w') as pipe, open(log, 'w') as log:
     log.write(f"------------Query------------ \n {query} \n ------------Outputs------------\n")
     process = subprocess.Popen(query, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
