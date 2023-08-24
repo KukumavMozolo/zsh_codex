@@ -42,7 +42,7 @@
 
 ## What is it?
 
-This is a ZSH plugin that enables you to use starcoder in the command line. No internet connection required
+This is a ZSH plugin that enables you to use starcoder in the command line. No internet connection required. Tested with linux only though.
 
 ## How do I install it?
 ### Manual Installation
