@@ -16,7 +16,7 @@ create_completion() {
 
 
   # Run the Python script in the background
-  ($ZSH_CUSTOM/plugins/zsh_codex/create_completion.py $text) &
+  ($ZSH_CUSTOM/plugins/zsh_starcodex/create_completion.py $text) &
   local python_pid=$!
 
 

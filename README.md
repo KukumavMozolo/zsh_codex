@@ -51,7 +51,7 @@ This is a ZSH plugin that enables you to use starcoder in the command line. No i
 2. Download the ZSH plugin.
 
 ```
-https://github.com/KukumavMozolo/zsh_codex.git ~/.oh-my-zsh/custom/plugins/zsh_codex 
+https://github.com/KukumavMozolo/zsh_starcodex.git ~/.oh-my-zsh/custom/plugins/zsh_starcodex 
 ```
 
 3. Add the following to your `.zshrc` file.
