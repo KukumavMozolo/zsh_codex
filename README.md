@@ -1,4 +1,4 @@
-<h1 align="center">⌨️ 🦾 Zsh Codex</h1>
+<h1 align="center">⌨️ 🦾 Zsh Starcodex</h1>
 
 <p align="center">
     AI in the command line.
@@ -42,9 +42,7 @@
 
 ## What is it?
 
-This is a ZSH plugin that enables you to use OpenAI's powerful Codex AI in the command line. OpenAI Codex is the AI that also powers GitHub Copilot.
-To use this plugin you need to get access to OpenAI's [Codex API](https://openai.com/blog/openai-codex/).
-
+This is a ZSH plugin that enables you to use starcoder in the command line. No internet connection required. Tested with linux only though.
 
 ## How do I install it?
 ### Manual Installation
@@ -60,18 +58,18 @@ https://github.com/KukumavMozolo/zsh_codex.git ~/.oh-my-zsh/custom/plugins/zsh_c
 
 Using oh-my-zsh:
 ```
-    plugins=(zsh_codex)
+    plugins=(zsh_starcodex)
     bindkey '^X' create_completion
 ```
 Without oh-my-zsh:
 ```
-    # in your/custom/path you need to have a "plugins" folder and in there you clone the repository as zsh_codex
+    # in your/custom/path you need to have a "plugins" folder and in there you clone the repository as zsh_starcodex
     export ZSH_CUSTOM="your/custom/path"
-    source "$ZSH_CUSTOM/plugins/zsh_codex/zsh_codex.plugin.zsh"
+    source "$ZSH_CUSTOM/plugins/zsh_starcodex/zsh_starcodex.plugin.zsh"
     bindkey '^X' create_completion
 ```
 
-4. Edit the config.json in ```~/.oh-my-zsh/custom/plugins/zsh_codex/``` so that ```path_to_starcoder_cpp_main``` points
+4. Edit the config.json in ```~/.oh-my-zsh/custom/plugins/zsh_starcodex/``` so that ```path_to_starcoder_cpp_main``` points
 to your starcoder.cpp directory
 
 5. Run `zsh`, start typing and complete it using `^X`([Ctrl] + X)!
@@ -90,7 +88,7 @@ Add the line
 ```
 zle -N create_completion
 ```
-before you call `bindkey` but after loading the plugin (`plugins=(zsh_codex)`).
+before you call `bindkey` but after loading the plugin (`plugins=(zsh_starcodex)`).
 
 ### Already exists and is not an empty directory
 ```
@@ -98,7 +96,7 @@ fatal: destination path '~.oh-my-zsh/custom/plugins'
 ```
 Try to download the ZSH plugin again.
 ```
-git clone https://github.com/tom-doerr/zsh_codex.git ~/.oh-my-zsh/custom/plugins/zsh_codex
+git clone https://github.com/tom-doerr/zsh_starcodex.git ~/.oh-my-zsh/custom/plugins/zsh_starcodex
 ```
 ---
 <p align="center">

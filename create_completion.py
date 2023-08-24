@@ -7,7 +7,7 @@ import sys
 
 conf = None
 home_directory = os.path.expanduser( '~' )
-with open(home_directory+'/.oh-my-zsh/custom/plugins/zsh_codex/config.json') as f:
+with open(home_directory+'/.oh-my-zsh/custom/plugins/zsh_starcodex/config.json') as f:
     conf = json.load(f)
 
 top_k = conf["top_k"]
