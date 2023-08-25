@@ -25,16 +25,16 @@ https://github.com/KukumavMozolo/zsh_starcodex
 
 ## What is it?
 
-This is a ZSH plugin that enables you to use starcoder in the command line. No internet connection required. Tested with linux only though.
+This is a ZSH plugin that enables you to use codelama in the command line. No internet connection required. Tested with linux only though.
 
 ## How do I install it?
 ### Manual Installation
-1. Install https://github.com/bigcode-project/starcoder.cpp and quantize the ```HuggingFaceH4/starchat-beta``` model.
+1. Install https://github.com/ggerganov/llama.cpp download codelama, e.g.  https://huggingface.co/TheBloke/CodeLlama-34B-Instruct-GGUF model.
 
 2. Download the ZSH plugin.
 
 ```
-https://github.com/KukumavMozolo/zsh_starcodex.git ~/.oh-my-zsh/custom/plugins/zsh_starcodex 
+git clone https://github.com/KukumavMozolo/zsh_starcodex.git ~/.oh-my-zsh/custom/plugins/zsh_starcodex 
 ```
 
 3. Add the following to your `.zshrc` file.

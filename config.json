@@ -1,6 +1,6 @@
 {
-  "path_to_starcoder.cpp": "path/to/your/starcoder.cpp/directory",
-  "model_name": "models/HuggingFaceH4/starchat-beta-ggml-q4_1.bin",
+  "path_to_lama.cpp": "path/to/your/lama.cpp/directory",
+  "model_name": "models/codellama-34b-instruct.Q4_K_M.gguf",
   "top_k": "50",
   "top_p": "98",
   "temp": "0.02",
