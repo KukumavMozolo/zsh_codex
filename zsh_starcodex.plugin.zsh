@@ -51,37 +51,17 @@ create_completion() {
 
 
   while [[ "$input" == *"$delimiter"* ]]; do
-      before_delimiter="${input%%$delimiter*}"
       input="${input#*$delimiter}"
 
       if [[ "$input" == *"$delimiter"* ]]; then
           substring="${input%%$delimiter*}"
           substrings+=("$substring")
-          echo "Substring: $substring"
       fi
 
       input="${input#*$delimiter}"
   done
 
-  local delimiter="sh\`\`\`"
-
-
-  while [[ "$input" == *"$delimiter"* ]]; do
-      before_delimiter="${input%%$delimiter*}"
-      input="${input#*$delimiter}"
-
-      if [[ "$input" == *"$delimiter"* ]]; then
-          substring="${input%%$delimiter*}"
-          substrings+=("$substring")
-          echo "Substring: $substring"
-      fi
-
-      input="${input#*$delimiter}"
-  done
-
-  substrings=("${substrings[@]:1}")
-
-  #local options=("Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas")
+#  local options=("Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas" "Apple" "Banana" "Ananas")
   _my_custom_completion "${substrings[@]}"
   }
 

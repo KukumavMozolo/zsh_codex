@@ -6,33 +6,46 @@ import subprocess
 import sys
 
 conf = None
-home_directory = os.path.expanduser( '~' )
-with open(home_directory+'/.oh-my-zsh/custom/plugins/zsh_starcodex/config.json') as f:
+home_directory = os.path.expanduser('~')
+with open(home_directory + '/.oh-my-zsh/custom/plugins/zsh_starcodex/config.json') as f:
     conf = json.load(f)
 
 top_k = conf["top_k"]
 top_p = conf["top_p"]
 temp = conf["temp"]
 n = conf["n"]
-main = conf["path_to_starcoder.cpp"] +"main"
-model = conf["path_to_starcoder.cpp"] + conf["model_name"]
-system = "<|system|> You are the leading linux shell expert for writing the shortest commands possible, please help me complete the following command. Start your reponse by giving a least detailed(minimal) step by step explanation for all parts of the shell command. At the end summarize the above steps by writing out the full command in one line surrounded by \`\`\` on both sides. Write nothing else after and most importantly be extremly brief.<|end|>"
-# system = "<|system|> You are the leading linux shell expert for writing the shortest commands possible, please help me complete the following command. Make sure to souround the full command by \`\`\` on both sides"
-params = f"--top_k {top_k} --top_p {top_p} --temp {temp} -n {n}"
+main = conf["path_to_lama.cpp"] + "main"
+model = conf["path_to_lama.cpp"] + conf["model_name"]
+system = """
+You are the leading linux shell expert for writing the shortest commands possible, please help me to complete the command defined between then <|start|> and <|end|> tokens. 
+Be brief, add nothing more. There will be only one question and one answer.
+Here is an example of the required format:
+<|start|> list files in current directory <|end|>
+```ls```
+"""
+# params = f"--top_k {top_k} --top_p {top_p} --temp {temp} -n {n}"
 
-
-user = '<|user|>' + str(sys.argv[1]) + "<|end|><|assistant|>" #talks less
-# user = '<|user|>' + str(sys.argv[1]) + "<|assistant|>" #talks more
-query= main + ' -m ' + model + ' -p \"' + system + user + " \" " + params
+start = '<|start|>'
+end = '<|end|>'
+eos = '[end of text]'
+user = start + str(sys.argv[1]) + end
+query = main + ' -m ' + model + ' --prompt \'' + system + user + '\''
 
 pipe_path = "/tmp/tmp_pipe"
-log = home_directory+'/.oh-my-zsh/custom/plugins/zsh_starcodex/info.log'
+log = home_directory + '/.oh-my-zsh/custom/plugins/zsh_starcodex/info.log'
 with open(pipe_path, 'w') as pipe, open(log, 'w') as log:
     log.write(f"------------Query------------ \n {query} \n ------------Outputs------------\n")
-    process = subprocess.Popen(query, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
+    process = subprocess.Popen(query, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
+                               bufsize=1)
     with process.stdout:
         counter = 0
+        push = False
         for line in iter(process.stdout.readline, ''):
+            if push:
+                pipe.write(line)
+                pipe.flush()
+            if "```ls```" in line:
+                push = True
+            if eos in line:
+                push = False
             log.write(line)
-            pipe.write(line)
-            pipe.flush()
